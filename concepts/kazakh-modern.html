@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Concept 03 - Kazakh Modern</title>
+    <style>
+      :root {
+        --night: #102947;
+        --night-2: #153251;
+        --cream: #f6f1e8;
+        --sand: #dcc8ab;
+        --copper: #a86a3d;
+        --text: #f5efe5;
+        --muted: rgba(245, 239, 229, 0.78);
+        --ink: #16314d;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(168, 106, 61, 0.16), transparent 18%),
+          radial-gradient(circle at bottom right, rgba(220, 200, 171, 0.18), transparent 24%),
+          linear-gradient(160deg, #0f223b 0%, #153251 56%, #17385a 100%);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(circle at 15% 20%, rgba(246, 241, 232, 0.05), transparent 12%),
+          radial-gradient(circle at 82% 72%, rgba(246, 241, 232, 0.05), transparent 14%);
+        pointer-events: none;
+      }
+
+      .shell {
+        width: min(1200px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 64px;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        border-radius: 999px;
+        border: 1px solid rgba(246, 241, 232, 0.12);
+        background: rgba(15, 34, 61, 0.6);
+        backdrop-filter: blur(16px);
+      }
+
+      .brand {
+        display: grid;
+        gap: 4px;
+      }
+
+      .eyebrow {
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 11px;
+        color: var(--muted);
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      .brand strong {
+        font-size: 18px;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      nav {
+        display: flex;
+        gap: 18px;
+        color: var(--muted);
+        font-family: "Segoe UI", Arial, sans-serif;
+        font-size: 14px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 18px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 700;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      .button--primary {
+        background: var(--sand);
+        color: var(--ink);
+      }
+
+      .button--secondary {
+        border: 1px solid rgba(246, 241, 232, 0.16);
+        color: var(--text);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.38fr) minmax(320px, 0.82fr);
+        gap: 20px;
+        padding-top: 24px;
+      }
+
+      .hero-copy,
+      .hero-aside,
+      .feature,
+      .case,
+      .calc,
+      .cta {
+        border-radius: 34px;
+        border: 1px solid rgba(246, 241, 232, 0.1);
+        backdrop-filter: blur(14px);
+      }
+
+      .hero-copy {
+        position: relative;
+        overflow: hidden;
+        padding: 36px;
+        background:
+          radial-gradient(circle at top right, rgba(220, 200, 171, 0.12), transparent 28%),
+          linear-gradient(180deg, rgba(15, 34, 61, 0.88), rgba(17, 41, 71, 0.82));
+      }
+
+      .hero-copy::after {
+        content: "";
+        position: absolute;
+        right: -40px;
+        bottom: -40px;
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        border: 1px solid rgba(220, 200, 171, 0.1);
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(220, 200, 171, 0.1);
+        border: 1px solid rgba(220, 200, 171, 0.18);
+        color: #f0ddc2;
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        line-height: 0.97;
+        font-weight: 600;
+      }
+
+      h1 {
+        max-width: 11ch;
+        margin-top: 18px;
+        font-size: clamp(46px, 8vw, 84px);
+      }
+
+      p {
+        line-height: 1.7;
+        color: var(--muted);
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .quote {
+        margin-top: 26px;
+        padding: 18px 20px;
+        border-radius: 24px;
+        background: rgba(246, 241, 232, 0.05);
+        border: 1px solid rgba(246, 241, 232, 0.09);
+      }
+
+      .quote strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--text);
+        font-family: Georgia, "Times New Roman", serif;
+      }
+
+      .hero-aside {
+        padding: 22px;
+        background:
+          linear-gradient(180deg, rgba(246, 241, 232, 0.95), rgba(228, 218, 201, 0.92)),
+          linear-gradient(120deg, rgba(168, 106, 61, 0.08), transparent);
+        color: var(--ink);
+      }
+
+      .hero-aside p {
+        color: rgba(22, 49, 77, 0.72);
+      }
+
+      .card {
+        padding: 18px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.34);
+        border: 1px solid rgba(22, 49, 77, 0.08);
+      }
+
+      .metric {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .metric div {
+        padding: 14px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.46);
+      }
+
+      .metric strong {
+        display: block;
+        font-size: 28px;
+        margin-bottom: 6px;
+      }
+
+      .section {
+        padding-top: 34px;
+      }
+
+      .section-head {
+        display: grid;
+        gap: 10px;
+        max-width: 660px;
+        margin-bottom: 18px;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .feature,
+      .case,
+      .calc,
+      .cta {
+        padding: 22px;
+        background: rgba(15, 34, 61, 0.74);
+      }
+
+      .feature h3,
+      .case h3,
+      .calc h3,
+      .cta h3 {
+        font-size: 28px;
+        margin-bottom: 12px;
+      }
+
+      .case-badge {
+        display: inline-flex;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(220, 200, 171, 0.1);
+        border: 1px solid rgba(220, 200, 171, 0.16);
+        color: #f0ddc2;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      .calc {
+        display: grid;
+        grid-template-columns: minmax(0, 1.18fr) minmax(290px, 0.82fr);
+        gap: 20px;
+      }
+
+      .calc-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .line {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 14px 16px;
+        border-radius: 18px;
+        background: rgba(246, 241, 232, 0.05);
+        border: 1px solid rgba(246, 241, 232, 0.08);
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      .estimate {
+        border-radius: 28px;
+        padding: 20px;
+        background:
+          radial-gradient(circle at top left, rgba(220, 200, 171, 0.12), transparent 28%),
+          rgba(246, 241, 232, 0.94);
+        color: var(--ink);
+      }
+
+      .estimate p {
+        color: rgba(22, 49, 77, 0.72);
+      }
+
+      .estimate strong {
+        display: block;
+        font-size: 42px;
+        margin: 12px 0 8px;
+      }
+
+      .cta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+      }
+
+      @media (max-width: 920px) {
+        .hero,
+        .grid-3,
+        .calc {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar,
+        .cta {
+          flex-direction: column;
+          align-items: flex-start;
+          border-radius: 28px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          width: min(100% - 20px, 1200px);
+        }
+
+        .hero-copy,
+        .hero-aside,
+        .feature,
+        .case,
+        .calc,
+        .cta {
+          padding: 18px;
+        }
+
+        .metric {
+          grid-template-columns: 1fr;
+        }
+
+        .line {
+          flex-direction: column;
+          gap: 6px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <p class="eyebrow">concept 03</p>
+          <strong>Amanat Vision / Kazakh Modern</strong>
+        </div>
+        <nav>
+          <span>О компании</span>
+          <span>Калькулятор</span>
+          <span>Кейсы</span>
+          <span>Связь</span>
+        </nav>
+        <a class="button button--primary" href="#cta">Выбрать концепт</a>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="tag">Продажа / Монтаж / Аренда</span>
+          <h1>Технологичная безопасность с лицом сильного локального бренда.</h1>
+          <p>
+            Концепт с более теплой и статусной подачей. Современный tech-подход здесь сочетается
+            с ощущением локальной идентичности, спокойной уверенности и дорогой визуальной культуры.
+          </p>
+          <div class="actions">
+            <a class="button button--primary" href="#calc">Смотреть расчет</a>
+            <a class="button button--secondary" href="#cases">Смотреть кейсы</a>
+          </div>
+          <div class="quote">
+            <strong>Идея направления</strong>
+            Этот стиль нужен, если хочется отличаться от типовых сайтов конкурентов и создать более запоминаемый бренд.
+          </div>
+        </div>
+
+        <aside class="hero-aside">
+          <div class="card">
+            <p class="eyebrow">Компания в цифрах</p>
+            <div class="metric">
+              <div>
+                <strong>97%</strong>
+                <span>повторных обращений</span>
+              </div>
+              <div>
+                <strong>4.9/5</strong>
+                <span>оценка сервиса</span>
+              </div>
+              <div>
+                <strong>1 день</strong>
+                <span>до выезда инженера</span>
+              </div>
+              <div>
+                <strong>24/7</strong>
+                <span>доступ к объекту</span>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <p class="eyebrow">Характер</p>
+            <p>Лучше всего раскрывается там, где важны доверие, сервис, бренд и отличимость от безликих шаблонов.</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <p class="eyebrow">Почему этот стиль</p>
+          <h2>Самый запоминаемый и брендовый вариант из трех.</h2>
+          <p>Он делает компанию не просто установщиком камер, а брендом с характером и более дорогим визуальным образом.</p>
+        </div>
+        <div class="grid-3">
+          <article class="feature">
+            <h3>Имидж</h3>
+            <p>Подчеркивает, что перед клиентом не потоковый подрядчик, а сильная локальная компания с лицом.</p>
+          </article>
+          <article class="feature">
+            <h3>Подача</h3>
+            <p>Лучше работает на статус, доверие, сервис и продуманную бренд-коммуникацию.</p>
+          </article>
+          <article class="feature">
+            <h3>Отличие</h3>
+            <p>Визуально сильнее выделяет на фоне шаблонных tech- и строительных сайтов.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="cases">
+        <div class="section-head">
+          <p class="eyebrow">Кейсы</p>
+          <h2>Примеры объектов в более статусной и мягкой подаче.</h2>
+        </div>
+        <div class="grid-3">
+          <article class="case">
+            <span class="case-badge">Частный дом</span>
+            <h3>Периметр и двор</h3>
+            <p>Теплая премиальная подача хорошо работает для домашнего сегмента и клиентов, чувствительных к уровню сервиса.</p>
+          </article>
+          <article class="case">
+            <span class="case-badge">Бутик / шоурум</span>
+            <h3>Торговое пространство</h3>
+            <p>Стиль помогает говорить о безопасности аккуратно, без тяжеловесного индустриального визуала.</p>
+          </article>
+          <article class="case">
+            <span class="case-badge">Офис компании</span>
+            <h3>Входы и общие зоны</h3>
+            <p>Подходит, если нужно показать технологичность и при этом сохранить презентабельный корпоративный образ.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="calc">
+        <div class="section-head">
+          <p class="eyebrow">Калькулятор</p>
+          <h2>Даже расчет здесь может выглядеть аккуратно, премиально и без перегруза.</h2>
+        </div>
+        <div class="calc">
+          <div class="calc-list">
+            <div class="line"><span>Тип объекта</span><strong>Офис / частный дом</strong></div>
+            <div class="line"><span>Количество камер</span><strong>8</strong></div>
+            <div class="line"><span>Формат</span><strong>Покупка или аренда</strong></div>
+            <div class="line"><span>Архив</span><strong>14 дней</strong></div>
+            <div class="line"><span>Удаленный просмотр</span><strong>Подключен</strong></div>
+          </div>
+          <div class="estimate">
+            <p class="eyebrow">Ориентировочный бюджет</p>
+            <strong>от 428 000 ₸</strong>
+            <p>Арендный сценарий можно подать мягче и сервиснее, с акцентом на удобство и быстрый запуск.</p>
+            <a class="button button--primary" href="#cta">Получить консультацию</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="cta">
+        <div class="cta">
+          <div>
+            <p class="eyebrow">Итог по концепту</p>
+            <h3>Kazakh Modern</h3>
+            <p>Если хотите более уникальный, теплый и брендовый образ, этот вариант может оказаться самым интересным.</p>
+          </div>
+          <a class="button button--primary" href="command-center.html">Вернуться к первому концепту</a>
+        </div>
+      </section>
+    </div>
+  </body>
+  </html>
