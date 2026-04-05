@@ -81,10 +81,6 @@ function App() {
               <span>{siteContent.header.themeToggleEyebrow}</span>
               <strong>{themeMode === 'dark' ? siteContent.header.toLightLabel : siteContent.header.toDarkLabel}</strong>
             </button>
-
-            <a className="ui-button ui-button--primary ui-button--sm" href="#lead">
-              {siteConfig.primaryCtaLabel}
-            </a>
           </div>
         </div>
       </header>
