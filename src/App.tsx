@@ -56,7 +56,6 @@ function App() {
 
           <div className="topbar__actions">
             <div className="language-toggle">
-              <span className="language-toggle__label">{siteContent.header.languageSwitchLabel}</span>
               <div className="language-toggle__options" role="group" aria-label={siteContent.header.languageSwitchAriaLabel}>
                 {languageOptions.map((option) => (
                   <button
@@ -78,7 +77,6 @@ function App() {
               onClick={() => setThemeMode((current) => (current === 'dark' ? 'light' : 'dark'))}
               aria-label={themeMode === 'dark' ? siteContent.header.enableLightAriaLabel : siteContent.header.enableDarkAriaLabel}
             >
-              <span>{siteContent.header.themeToggleEyebrow}</span>
               <strong>{themeMode === 'dark' ? siteContent.header.toLightLabel : siteContent.header.toDarkLabel}</strong>
             </button>
           </div>
