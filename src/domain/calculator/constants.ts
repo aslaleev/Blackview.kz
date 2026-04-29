@@ -14,9 +14,14 @@ export const RESOLUTION_MULTIPLIER: Record<CalculatorResolution, number> = {
 export const OBJECT_COMPLEXITY_MULTIPLIER: Record<CalculatorObjectType, number> = {
   warehouse: 1.18,
   store: 1.05,
+  pharmacy: 1.04,
   office: 1,
-  house: 0.96,
-  construction: 1.24,
+  parking: 1.16,
+  production: 1.24,
+  yard: 0.96,
+  apartmentEntrance: 1.08,
+  stairwell: 1.06,
+  other: 1,
 };
 
 export const RECORDER_BASE_COST = 58000;

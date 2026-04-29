@@ -1,4 +1,14 @@
-export type CalculatorObjectType = 'warehouse' | 'store' | 'office' | 'house' | 'construction';
+export type CalculatorObjectType =
+  | 'warehouse'
+  | 'store'
+  | 'pharmacy'
+  | 'office'
+  | 'parking'
+  | 'production'
+  | 'yard'
+  | 'apartmentEntrance'
+  | 'stairwell'
+  | 'other';
 
 export type CalculatorResolution = '2mp' | '4mp' | '8mp';
 

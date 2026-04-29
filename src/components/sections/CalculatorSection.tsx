@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSiteContent } from '../../content/siteContent';
 import { calculateEstimate } from '../../domain/calculator/calculateEstimate';
 import { getDefaultCalculatorInput } from '../../domain/calculator/defaults';
-import type { CalculatorInput, CalculatorObjectType, CalculatorResolution } from '../../domain/calculator/types';
+import type { CalculatorInput, CalculatorObjectType } from '../../domain/calculator/types';
 import { formatCurrency } from '../../lib/format';
 import type { LeadCalculatorSnapshot } from '../../lib/lead';
 import { Button } from '../ui/Button';
@@ -37,7 +37,6 @@ function CalculatorSection({ onSnapshotChange }: CalculatorSectionProps) {
   const siteContent = useSiteContent();
   const [input, setInput] = useState<CalculatorInput>(getDefaultCalculatorInput);
   const objectLabels = siteContent.calculatorSection.objectLabels as Record<CalculatorObjectType, string>;
-  const resolutionLabels = siteContent.calculatorSection.resolutionLabels as Record<CalculatorResolution, string>;
   const baseResult = calculateEstimate(input);
   const result = {
     ...baseResult,
@@ -83,17 +82,6 @@ function CalculatorSection({ onSnapshotChange }: CalculatorSectionProps) {
             </label>
 
             <label className="form-field">
-              <span className="eyebrow">{siteContent.calculatorSection.resolutionLabel}</span>
-              <select value={input.resolution} onChange={(event) => updateInput('resolution', event.target.value as CalculatorResolution)}>
-                {Object.entries(resolutionLabels).map(([value, label]) => (
-                  <option key={value} value={value}>
-                    {label}
-                  </option>
-                ))}
-              </select>
-            </label>
-
-            <label className="form-field">
               <span className="eyebrow">{siteContent.calculatorSection.outdoorCameraLabel}</span>
               <input
                 type="number"
@@ -130,20 +118,6 @@ function CalculatorSection({ onSnapshotChange }: CalculatorSectionProps) {
               </span>
             </label>
 
-            <label className="form-field">
-              <span className="eyebrow">{siteContent.calculatorSection.rentalMonthsLabel}</span>
-              <input
-                type="range"
-                min="1"
-                max="24"
-                step="1"
-                value={input.rentalMonths}
-                onChange={(event) => updateInput('rentalMonths', Number(event.target.value))}
-              />
-              <span className="form-field__hint">
-                {input.rentalMonths} {siteContent.calculatorSection.rentalMonthsUnit}
-              </span>
-            </label>
           </div>
 
           <div className="toggle-grid">
@@ -154,10 +128,6 @@ function CalculatorSection({ onSnapshotChange }: CalculatorSectionProps) {
             <label className="toggle-card">
               <input type="checkbox" checked={input.siteVisitRequired} onChange={(event) => updateInput('siteVisitRequired', event.target.checked)} />
               <span>{siteContent.calculatorSection.toggleLabels.siteVisitRequired}</span>
-            </label>
-            <label className="toggle-card">
-              <input type="checkbox" checked={input.nightVisionEnabled} onChange={(event) => updateInput('nightVisionEnabled', event.target.checked)} />
-              <span>{siteContent.calculatorSection.toggleLabels.nightVisionEnabled}</span>
             </label>
             <label className="toggle-card">
               <input type="checkbox" checked={input.audioEnabled} onChange={(event) => updateInput('audioEnabled', event.target.checked)} />
@@ -185,16 +155,6 @@ function CalculatorSection({ onSnapshotChange }: CalculatorSectionProps) {
               <span>{siteContent.calculatorSection.purchaseLabel}</span>
               <strong>{formatCurrency(result.purchaseCost)}</strong>
             </div>
-            <div>
-              <span>{siteContent.calculatorSection.rentalMonthlyLabel}</span>
-              <strong>{formatCurrency(result.rentalMonthlyCost)}</strong>
-            </div>
-          </div>
-
-          <div className="result-highlight">
-            <p className="eyebrow">{siteContent.calculatorSection.rentalScenarioEyebrow}</p>
-            <h3>{formatCurrency(result.rentalPeriodCost)}</h3>
-            <p>{siteContent.calculatorSection.rentalScenarioText.replace('{months}', String(input.rentalMonths))}</p>
           </div>
 
           <ul className="result-notes">

@@ -95,9 +95,7 @@ function LeadSection({ calculatorSnapshot }: LeadSectionProps) {
               <p className="eyebrow">{siteContent.leadSection.snapshotEyebrow}</p>
               <strong>{formatCurrency(calculatorSnapshot.result.purchaseCost)}</strong>
               <p>
-                {siteContent.leadSection.snapshotText
-                  .replace('{count}', String(calculatorSnapshot.result.totalCameras))
-                  .replace('{monthly}', formatCurrency(calculatorSnapshot.result.rentalMonthlyCost))}
+                {siteContent.leadSection.snapshotText.replace('{count}', String(calculatorSnapshot.result.totalCameras))}
               </p>
             </div>
           ) : null}

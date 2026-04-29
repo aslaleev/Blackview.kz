@@ -8,7 +8,7 @@ export function getDefaultCalculatorInput(): CalculatorInput {
     resolution: '4mp',
     archiveDays: 14,
     audioEnabled: false,
-    nightVisionEnabled: true,
+    nightVisionEnabled: false,
     installationRequired: true,
     siteVisitRequired: true,
     rentalMonths: 12,
